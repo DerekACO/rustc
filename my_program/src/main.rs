@@ -1,3 +1,8 @@
 fn main() {
-    println!("Hello, Derek!");
+   let matrix =  [[1;10];10];
+    
+    
+    println!("{:?}", matrix);
+
+  
 }
