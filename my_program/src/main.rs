@@ -10,12 +10,12 @@ fn check_guess(guess: i32, secret: i32) -> i32 {
 
 fn main() {
     let secret = 42; 
-    let guesses_array = [30, 50, 40, 45, 42]; 
+    let guesses_ = [30, 50, 40, 45, 42]; 
     let mut guesses = 0; 
 
     println!("I'm thinking of a number 1 through 100... can you guess what it is?");
 
-    for &guess in guesses_array.iter() {
+    for &guess in guesses_.iter() {
         guesses += 1; 
 
         
@@ -26,9 +26,9 @@ fn main() {
             println!("Correct! You've guessed the number {}.", guess);
             break; 
         } else if result == 1 {
-            println!("{} is too high!", guess);
+            println!("{} is too high.", guess);
         } else {
-            println!("{} is too low!", guess);
+            println!("{} is too low.", guess);
         }
     }
 
