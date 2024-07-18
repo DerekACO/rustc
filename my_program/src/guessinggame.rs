@@ -13,7 +13,7 @@ fn main() {
     let guesses_array = [30, 50, 40, 45, 42]; 
     let mut guesses = 0; 
 
-    println!("I'm thinking of a number 1 through 100... can you guess what it is?");
+    println!("Im thinking of a number 1 through 100... can you guess what it is?");
 
     for &guess in guesses_array.iter() {
         guesses += 1; 
@@ -23,7 +23,7 @@ fn main() {
 
         
         if result == 0 {
-            println!("Correct! You've guessed the number {}.", guess);
+            println!("Correct! You've guessed my number {}.", guess);
             break; 
         } else if result == 1 {
             println!("{} is too high!", guess);
