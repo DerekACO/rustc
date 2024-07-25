@@ -1,37 +1,39 @@
-fn check_guess(guess: i32, secret: i32) -> i32 {
-    if guess == secret {
-        0
-    } else if guess > secret {
-        1
-    } else {
-        -1
-    }
+use std::process::Command;
+use std::io::{self, Read, Write};
+
+
+fn executing_os_commands_linux(command_full:&str) {
+
+    let parts: Vec<&str> = command_full.split_whitespace().collect();
+    let actual_command = parts[0];
+    let arg1 = parts[1];
+
+    let output = Command::new(actual_command)
+        .arg(arg1)
+        .output()
+        .expect("Failed to execute command");
+
+        //println!("{:?}", output);
+    println!("Command output: {}", String::from_utf8_lossy(&output.stdout));
 }
 
-fn main() {
-    let secret = 42; 
-    let guesses_ = [30, 50, 40, 45, 42]; 
-    let mut guesses = 0; 
+fn accept_linux_command_from_user() -> String{
+ let mut buffer = String::new();
+print!("Give a command.");
+    io::stdout().flush().unwrap();
+    io::stdin().read_line(&mut buffer).unwrap();
+    buffer.trim().to_string()
 
-    println!("I'm thinking of a number 1 through 100... can you guess what it is?");
+}
 
-    for &guess in guesses_.iter() {
-        guesses += 1; 
 
-        
-        let result = check_guess(guess, secret);
+fn main(){
 
-        
-        if result == 0 {
-            println!("Correct! You've guessed the number {}.", guess);
-            break; 
-        } else if result == 1 {
-            println!("{} is too high.", guess);
-        } else {
-            println!("{} is too low.", guess);
-        }
-    }
+    let full_command:String = accept_linux_command_from_user();
+    executing_os_commands_linux(&full_command);
 
-    
-    println!("It took you {} guesses.", guesses);
+
+  //  executing_os_commands_linux("echo hello") ; 
+    //executing_os_commands_linux("mkdir hello");
+
 }
